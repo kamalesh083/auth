@@ -25,7 +25,7 @@ export const signup = async (req, res) => {
       password: hashedPassword,
       name,
       verificationToken,
-      verificationTokenExpires: Date.now() + 24 * 60 * 60 * 1000, // 24 hours
+      verificationTokenExpiresAt: Date.now() + 24 * 60 * 60 * 1000, // 24 hours
     });
 
     await user.save();
@@ -48,6 +48,7 @@ export const signup = async (req, res) => {
 
 export const verifyEmail = async (req, res) => {
   const { code } = req.body;
+  // console.log(code);
   try {
     const user = await User.findOne({
       verificationToken: code,
