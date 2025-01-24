@@ -10,10 +10,10 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3500;
 
-app.use("/api/auth", authRoutes);
-
 app.use(express.json()); // to parse incoming requests with JSON payloads
 app.use(cookieParser());
+
+app.use("/api/auth", authRoutes);
 
 app.listen(PORT, () => {
   connectDB();
