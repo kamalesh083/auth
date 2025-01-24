@@ -1,5 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
+import cookieParser from "cookie-parser";
 
 import { connectDB } from "./db/connectDB.js";
 import authRoutes from "./routes/auth.route.js";
@@ -10,7 +11,9 @@ const app = express();
 const PORT = process.env.PORT || 3500;
 
 app.use("/api/auth", authRoutes);
+
 app.use(express.json()); // to parse incoming requests with JSON payloads
+app.use(cookieParser());
 
 app.listen(PORT, () => {
   connectDB();
