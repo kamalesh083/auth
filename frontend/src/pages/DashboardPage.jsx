@@ -1,5 +1,7 @@
+import { motion } from "framer-motion";
+
 const DashboardPage = () => {
-  return <div>DashboardPage</div>;
+  return <motion.div></motion.div>;
 };
 
 export default DashboardPage;
